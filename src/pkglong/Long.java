@@ -5,17 +5,34 @@
  */
 package pkglong;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author aafan
  */
 public class Long {
 
-    /**
-     * @param args the command line arguments
+     /**
+     * @param tipoBD Tipo de la base de datos
+     * @param nombreBD Nombre de la base de datos
+     * @param sentenciaSQL Sentencia SQL a ejecutar
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws SQLException {
+         String tipoBD = args[0];
+        String nombreBD = args[1];
+        String sentenciaSQL = args[2];
+        
+        System.out.println("TipoBD:" + tipoBD);
+        System.out.println("sentenciaSQL:" + sentenciaSQL);
+        
+        Conexion conexion = new Conexion();
+        conexion.hacerConexion(nombreBD);
+        conexion.ejecutarConexion(tipoBD);
     }
     
 }
